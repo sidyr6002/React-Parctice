@@ -1,14 +1,12 @@
-import React, { Children } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
-import Div from "./Div";
-import Child from "./Child";
-import Button from "./Button";
+import Div from "./Div.jsx";
+import Child from "./Child.jsx";
 
 const el = document.getElementById("app");
 const root = createRoot(el);
 
-const child = Child({ name: "S Y Rahul" });
-const button = Button({ class: "btn" , title: "Submit"});
+const child = Child({ name: "Submit" });
+const div = Div({ className: "container", children: [child]});
 
-
-root.render(Div({class: "container", children: [child, button]}));
+root.render(div);
