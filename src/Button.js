@@ -2,13 +2,14 @@ import React from 'react';
 
 const Button = (props) => {
   const { clickFunc, children } = props;
-  const btnFunc = () => {
-    //console.log("Child:", children, "clicked");
+  const btnFunc = () => { 
     clickFunc();
   };
 
+  console.log(props)
+
   return (
-    <button onClick={() => btnFunc()}>
+    <button onClick={btnFunc}>
       {children}
     </button>
   );
