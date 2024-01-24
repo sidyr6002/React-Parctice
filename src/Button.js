@@ -1,18 +1,9 @@
-import React from 'react';
+import React, { memo } from "react";
 
-const Button = (props) => {
-  const { clickFunc, children } = props;
-  const btnFunc = () => { 
-    clickFunc();
-  };
-
-  console.log(props)
-
-  return (
-    <button onClick={btnFunc}>
-      {children}
-    </button>
-  );
-};
+const Button = memo((props) => {
+    const { clickFunc } = props;
+    console.log('Child component rendered!');
+    return <button onClick={clickFunc}>Click Me</button>;
+});
 
 export default Button;
