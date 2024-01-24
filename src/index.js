@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import Morning from "./Morning";
 import Div from "./Div";
-import ExampleComponent from "./Count";
-import Count from "./Count";
-
+import Timer from "./Timer";
+import Button from "./Button";
 
 const el = document.getElementById("app");
 const root = createRoot(el);
 
-const Comb = () => {
-    return <Div className="container">
-        <Count></Count>
-    </Div>
-}
+const App = () => {
+    const [showTimer, setShowTimer] = useState(true);
 
-root.render(<Comb/>);
+    const toggleTimer = () => {
+        setShowTimer(!showTimer);
+    };
+
+    return (
+        <>
+            <Div className="container">
+                {showTimer && <Timer /> }
+                <Button clickFunc={toggleTimer}>
+                    {showTimer ? "Stop" : "Start"} Timer
+                </Button>
+            </Div>
+        </>
+    );
+};
+
+root.render(<App />);
