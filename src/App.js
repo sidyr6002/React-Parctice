@@ -1,35 +1,32 @@
-import ButtonWithTooltip from './ButtonWithTooltip.js';
+import { useRef, useState } from "react";
+import ButtonWithTooltip from "./ButtonWithTooltip.js";
+import Timer from "./Timer.js";
+import Button from "./Button.js";
+import Input from "./Input.js";
 
-export default function App() {
-  return (
-    <div>
-      <ButtonWithTooltip
-        tooltipContent={
-          <div>
-            This tooltip does not fit above the button.
-            <br />
-            This is why it's displayed below instead!
-          </div>
+const App = () => {
+    const [showTimer, setShowTimer] = useState(false);
+    const [disabled, setDisabled] = useState(true);
+    const input = useRef(null);
+
+    const submitText = () => {
+        console.log(input.current.getBoundingClientRect())
+        setDisabled(!disabled);
+        if (disabled) {
+            input.current.value = "";
         }
-      >
-        Hover over me (tooltip above)
-      </ButtonWithTooltip>
-      <div style={{ height: 50 }} />
-      <ButtonWithTooltip
-        tooltipContent={
-          <div>This tooltip fits above the button</div>
-        }
-      >
-        Hover over me (tooltip below)
-      </ButtonWithTooltip>
-      <div style={{ height: 50 }} />
-      <ButtonWithTooltip
-        tooltipContent={
-          <div>This tooltip fits above the button</div>
-        }
-      >
-        Hover over me (tooltip below)
-      </ButtonWithTooltip>
-    </div>
-  );
-}
+    }
+
+    return (
+        <>
+            {showTimer && <Timer/>}
+            <Button onClick={() => setShowTimer(!showTimer)}>{showTimer ? "Stop" : "Start"} Timer</Button>
+            <br></br>
+            <Input refer={input} disabled={disabled} placeholder="Enter Text"/>
+            <Button onClick={submitText}>{disabled ? "Enable" : "Disable"} the input</Button>
+            <Button onClick={() => console.log("Value: " + input.current.value)}>Log Value</Button>
+        </>
+    );
+};
+
+export default App;
