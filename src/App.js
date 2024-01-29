@@ -1,31 +1,87 @@
-import { useRef, useState } from "react";
-import ButtonWithTooltip from "./ButtonWithTooltip.js";
-import Timer from "./Timer.js";
-import Button from "./Button.js";
+import { useCallback, useRef, useState } from "react";
 import Input from "./Input.js";
 
-const App = () => {
-    const [showTimer, setShowTimer] = useState(false);
-    const [disabled, setDisabled] = useState(true);
-    const input = useRef(null);
+const peopleList = [
+    {
+        id: 1,
+        name: "John",
+        age: 30,
+    },
+    {
+        id: 2,
+        name: "Jane",
+        age: 25,
+    },
+    {
+        id: 3,
+        name: "Haarika",
+        age: 20,
+    },
+    {
+        id: 4,
+        name: "Aishwarya",
+        age: 15,
+    },
+    {
+        id: 5,
+        name: "Rabindra",
+        age: 30,
+    },
+];
 
-    const submitText = () => {
-        console.log(input.current.getBoundingClientRect())
-        setDisabled(!disabled);
-        if (disabled) {
-            input.current.value = "";
-        }
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        //console.log("i: " + i + " j: " + j);
+        [array[i], array[j]] = [array[j], array[i]];
     }
+    return array;
+};
+
+const App = () => {
+    /* Get name and age of each person */
+    const [people, setPeople] = useState(peopleList);
+
+    const search = useCallback((searchName) => {
+        console.log("Search: " + searchName);
+        console.log(people[0]);
+
+        const filteredPeople = peopleList.filter((person) =>
+            person.name.toLowerCase().includes(searchName.toLowerCase())
+        );
+        setPeople(filteredPeople);
+    }, [people]);
 
     return (
-        <>
-            {showTimer && <Timer/>}
-            <Button onClick={() => setShowTimer(!showTimer)}>{showTimer ? "Stop" : "Start"} Timer</Button>
-            <br></br>
-            <Input refer={input} disabled={disabled} placeholder="Enter Text"/>
-            <Button onClick={submitText}>{disabled ? "Enable" : "Disable"} the input</Button>
-            <Button onClick={() => console.log("Value: " + input.current.value)}>Log Value</Button>
-        </>
+        <div>
+            <div>
+                <button
+                    className="button"
+                    onClick={() => setPeople(shuffleArray([...people]))}
+                >
+                    Shuffle
+                </button>
+                <Input placeholder="Search" onChange={search} />
+            </div>
+            <div>
+                <table className="people">
+                    <thead>
+                        <tr>
+                            <th style={{ textAlign: "left" }}>Name</th>
+                            <th style={{ textAlign: "left" }}>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {people.map((person) => (
+                            <tr key={person.id}>
+                                <td className="person">{person.name}</td>
+                                <td className="age">{person.age}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 };
 

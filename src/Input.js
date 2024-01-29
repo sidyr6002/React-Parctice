@@ -1,7 +1,9 @@
+import { memo } from "react";
+
 const Input = (props) => {
-    const {disabled, refer, placeholder} = props;
-    console.log("Value Inside Child: " + refer.current.value);
-    return <input style = {{margin: "20px 20px 0 0"}} disabled={disabled} ref={refer} placeholder={placeholder}/>;
+    const {onChange, placeholder} = props;
+    console.log("Search has been rendered");
+    return <input className ="input" onChange={(e) => onChange(e.target.value)} placeholder={placeholder}/>;
 };
 
-export default Input;
+export default memo(Input);
