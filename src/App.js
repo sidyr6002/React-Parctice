@@ -1,15 +1,9 @@
-import Login from "./Login.js";
-import Profile from "./Profile.js";
-import UserContextProvider from "./context/UserContextProvider.js";
+import MamaMia from "./CounterRedux.js";
 
 const App = () => {
-    /* Get name and age of each person */
     return (
         <>
-            <UserContextProvider>
-                <Login />
-                <Profile />
-            </UserContextProvider>
+           <MamaMia />
         </>
     );
 };

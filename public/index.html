@@ -5,56 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    .login {
+    :root, html { 
+      margin: 0;
+      padding: 0;
+    }
+    
+    .counter {
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      background-color: #222;
+      justify-content: center;
       align-items: center;
-      padding: 20px;
-      gap: 10px;
-      color: white;
+      gap: 1rem;
+      background-color: black;
     }
 
-    .login h1 {
-      color: #19dd19;
+    .counter .first {
+      width: 18rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .counter .first h1 {
+      font-size: 33px;
+      color: brown;
       margin: 0;
     }
 
-    .login input {
-      width: 250px;
-      border: none;
-      outline: none;
-      padding: 10px 10px 7.5px;
-      border-radius: 4px;
-      border: 1px solid black;
-      background: #333;
-      color: #fff;
-    }
-
-    .login button {
-      width: 250px;
-      border: none;
-      outline: none;  
-      padding: 10px 0px;
-      border-radius: 4px;
-    }
-    
-    .profile {
-      padding: 20px;
+    .counter .second {
+      width: 18rem;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      background: #444;
     }
 
-    .profile h1 {
-      color: #19dd19;
+    .counter .second input {
+      border: none;
+      border-radius: 0.1rem;
+      height: 100%;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      width: 5rem;
+      font-size: medium;
+      color: rgb(236, 147, 147);
+      background-color: #222;
     }
 
-    .profile h2 {
-      color: #fff;
+    .counter button {
+      border: none;
+      border-radius: 0.5rem;
+      padding: 10px;
+      text-transform: capitalize;
+      background-color: rgb(50, 126, 34);
+      color: white;
     }
+
+    .counter .second button {
+      width: 10rem;
+    }
+   
 
 
   </style>
