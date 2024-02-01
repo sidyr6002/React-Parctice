@@ -5,46 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    .people {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-    }
-
-    .people td, .people th {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-
-    .people tr:nth-child(even){
-      background-color: #f2f2f2;
-    }
-
-    .people tr:hover {
-      background-color: #ddd;
-    }
-
-    .people th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #c44307;
+    .login {
+      display: flex;
+      flex-direction: column;
+      background-color: #222;
+      align-items: center;
+      padding: 20px;
+      gap: 10px;
       color: white;
     }
 
-    .button {
-      background-color: #0da026;
-      color: white;
+    .login h1 {
+      color: #19dd19;
+      margin: 0;
+    }
+
+    .login input {
+      width: 250px;
       border: none;
-      border-radius: 3px;
-      margin: 0 20px 20px 0;
-      padding: 8px 12px;
+      outline: none;
+      padding: 10px 10px 7.5px;
+      border-radius: 4px;
+      border: 1px solid black;
+      background: #333;
+      color: #fff;
     }
 
-    .input {
-      padding: 7px;
-      border: solid 1px #ccc;
-      border-radius: 3px;
+    .login button {
+      width: 250px;
+      border: none;
+      outline: none;  
+      padding: 10px 0px;
+      border-radius: 4px;
     }
+    
+    .profile {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #444;
+    }
+
+    .profile h1 {
+      color: #19dd19;
+    }
+
+    .profile h2 {
+      color: #fff;
+    }
+
+
   </style>
 </head>
 <body>

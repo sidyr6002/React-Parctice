@@ -10,14 +10,18 @@ const Timer = () => {
             console.log("Set Interval has been called");
             setTime((prev) => prev + 1);
         }, 1000);
-        console.log("Use Effect has been called, Interval Ref: " + interval.current);
+        console.log(
+            "Use Effect has been called, Interval Ref: " + interval.current
+        );
         return () => stopTimer();
     }, []);
 
     const stopTimer = () => {
-        console.log("Stop Timer has been called. Interval Ref: " + interval.current);
+        console.log(
+            "Stop Timer has been called. Interval Ref: " + interval.current
+        );
         return clearInterval(interval.current);
-    }
+    };
 
     return (
         <div>

@@ -1,8 +1,8 @@
 // Custom button invoke custom funtion 
 
-const Button = ({ children: text, onClick }) => {
+const Button = ({ children: text, onClick, className }) => {
     return (
-        <button style = {{margin: "0 20px 0 0"}}onClick={onClick}>{text}</button>
+        <button className={className} onClick={onClick}>{text}</button>
     )
 }
 
